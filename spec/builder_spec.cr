@@ -3,30 +3,37 @@ require "./spec_helper"
 describe Middleware::Builder do
   context "basic `use`" do
     it "should add items to the stack and make them callable" do
-      data = {} of String => String
+      env = { "result" => [] of String }
 
-      proc = ->(env : Hash(String, String)) { env["data"] = "foobar"; env }
+      instance = Middleware::Builder(EnvType).new(PushHandler.new("foobar"))
+      instance.call(env)
 
-      instance = Middleware::Builder(Proc(Hash(String, String), Hash(String, String)), Hash(String, String)).new
-      instance.use(proc)
-      instance.call(data)
-
-      data["data"].should eq("foobar")
+      env["result"].first.should eq("foobar")
     end
 
     it "should be able to add multiple items" do
-      data = {} of String => String
+      env = { "result" => [] of String }
 
-      proc1 = ->(env : Hash(String, String)) { env["one"] = "foobar"; env }
-      proc2 = ->(env : Hash(String, String)) { env["two"] = "barfoo"; env }
+      instance = Middleware::Builder(EnvType).new([
+        PushHandler.new("foobar"),
+        PushHandler.new("barfoo")
+      ])
+      instance.call(env)
 
-      instance = Middleware::Builder(Proc(Hash(String, String), Hash(String, String)), Hash(String, String)).new
-      instance.use(proc1)
-      instance.use(proc2)
-      instance.call(data)
-
-      data["one"].should eq("foobar")
-      data["two"].should eq("barfoo")
+      env["result"].first.should eq("foobar")
+      env["result"].last.should eq("barfoo")
     end
+  end
+
+  it "should call classes in the proper order" do
+    env = { "result" => [] of String }
+
+    instance = Middleware::Builder(EnvType).new([
+      AppendPrependA.new,
+      AppendPrependB.new
+    ])
+    instance.call(env)
+
+    (env["result"] == ["A", "B", "B", "A"]).should eq(true)
   end
 end
