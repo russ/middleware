@@ -36,4 +36,16 @@ describe Middleware::Builder do
 
     (env["result"] == ["A", "B", "B", "A"]).should eq(true)
   end
+
+  it "runs the given block last" do
+    env = { "result" => [] of String }
+
+    instance = Middleware::Builder(EnvType).new do |env|
+      env["result"] << "last one"
+      env
+    end
+    instance.call(env)
+
+    (env["result"] == ["last one"]).should eq(true)
+  end
 end

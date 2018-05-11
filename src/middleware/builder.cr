@@ -2,6 +2,17 @@ module Middleware
   class Builder(EnvType)
     @handler : Handler
 
+    # Creates a new builder with the given block as handler.
+    def self.new(&handler : Middleware::Handler::Proc) : self
+      new(handler)
+    end
+
+    # Creates a new builder with a handler chain constructed from the *handlers*
+    # array and the given block.
+    def self.new(handlers : Array(Handler), &handler) : self
+      new(Middleware::Builder.build_call_chain(handlers, handler))
+    end
+
     # Creates a new builder with the *handlers* array as handler chain.
     def self.new(handlers : Array(Handler))
       new(Middleware::Builder.build_call_chain(handlers))
