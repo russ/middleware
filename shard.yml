@@ -1,0 +1,9 @@
+name: Middleware
+version: 0.1.0
+
+authors:
+  - Russ Smith <russ@bashme.org>
+
+crystal: 0.24.2
+
+license: MIT
