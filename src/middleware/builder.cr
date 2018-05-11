@@ -3,7 +3,7 @@ module Middleware
     @handler : Handler
 
     # Creates a new builder with the given block as handler.
-    def self.new(&handler : Middleware::Handler::Proc) : self
+    def self.new(&handler) : self
       new(handler)
     end
 
