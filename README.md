@@ -1,3 +1,5 @@
+[![GitHub release](https://img.shields.io/github/release/russ/middleware.svg)](https://github.com/russ/middleware/releases)
+
 # Middleware
 
 Middleware is a library which provides a generalized implementation of the chain of responsibility pattern for Crystal.
