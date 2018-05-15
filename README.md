@@ -1,6 +1,8 @@
 # Middleware
 
-TODO: Write a description here
+Middleware is a library which provides a generalized implementation of the chain of responsibility pattern for Crystal.
+
+This is heavily based on HTTP stdlib and inspiration from https://github.com/Ibsciss/ruby-middleware
 
 ## Installation
 
@@ -8,21 +10,38 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  Middleware:
-    github: russ/Middleware
+  middleware:
+    github: russ/middleware
 ```
 
 ## Usage
 
 ```crystal
-require "Middleware"
+require "middleware"
 ```
 
-TODO: Write usage instructions here
+```
+class PushHandler
+  include Middleware::Handler
 
-## Development
+  def initialize(@to_add : String)
+  end
 
-TODO: Write development instructions here
+  def call(env : EnvType)
+    env["result"] << @to_add
+    call_next(env)
+  end
+end
+
+context = { "result" => [] of String }
+instance = Middleware::Builder.new([
+  PushHandler.new("foobar"),
+  PushHandler.new("barfoo")
+])
+instance.call(context)
+```
+
+`{ "result" => ["foobar", "barfoo"] }`
 
 ## Contributing
 
