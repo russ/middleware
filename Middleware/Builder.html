@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/russ/middleware">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Middleware::Builder - github.com/russ/middleware</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/russ/middleware/Middleware" data-name="middleware">
+      <a href="../Middleware.html">Middleware</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/russ/middleware/Middleware/Builder" data-name="middleware::builder">
+      <a href="../Middleware/Builder.html">Builder</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/russ/middleware/Middleware/Handler" data-name="middleware::handler">
+      <a href="../Middleware/Handler.html">Handler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Middleware::Builder
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Middleware/Builder.html">Middleware::Builder</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/russ/middleware/blob/927b6ea15abeff847982034b3de7909ec131e908/src/middleware/builder.cr#L2" target="_blank">middleware/builder.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28handlers%3AArray%28Handler%29%29-class-method" class="signature"><strong>.new</strong>(handlers : Array(Handler))</a>
+        
+          <div class="summary"><p>Creates a new builder with the <em>handlers</em> array as handler chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28handler%3AHandler%29-class-method" class="signature"><strong>.new</strong>(handler : Handler)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build_call_chain%28handlers%29-class-method" class="signature"><strong>.build_call_chain</strong>(handlers)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#call%28env%3DNil%29-instance-method" class="signature"><strong>#call</strong>(env = <span class="t">Nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(handlers:Array(Handler))-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(handlers : Array(<a href="../Middleware/Handler.html">Handler</a>))
+
+        <a class="method-permalink" href="#new%28handlers%3AArray%28Handler%29%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new builder with the <em>handlers</em> array as handler chain.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/russ/middleware/blob/927b6ea15abeff847982034b3de7909ec131e908/src/middleware/builder.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(handler:Handler)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(handler : <a href="../Middleware/Handler.html">Handler</a>)
+
+        <a class="method-permalink" href="#new%28handler%3AHandler%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/russ/middleware/blob/927b6ea15abeff847982034b3de7909ec131e908/src/middleware/builder.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="build_call_chain(handlers)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build_call_chain</strong>(handlers)
+
+        <a class="method-permalink" href="#build_call_chain%28handlers%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/russ/middleware/blob/927b6ea15abeff847982034b3de7909ec131e908/src/middleware/builder.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="call(env=Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong>(env = <span class="t">Nil</span>)
+
+        <a class="method-permalink" href="#call%28env%3DNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/russ/middleware/blob/927b6ea15abeff847982034b3de7909ec131e908/src/middleware/builder.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
