@@ -1,4 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/russ/middleware.svg)](https://github.com/russ/middleware/releases)
+[![Build Status](https://travis-ci.org/russ/middleware.svg?branch=master)](https://travis-ci.org/russ/middleware)
 
 # Middleware
 
