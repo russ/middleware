@@ -1,5 +1,5 @@
 module Middleware
-  class Builder(EnvType)
+  class Builder
     @handler : Handler
 
     # Creates a new builder with the *handlers* array as handler chain.
@@ -15,7 +15,7 @@ module Middleware
     end
 
     def self.build_call_chain(handlers)
-      raise ArgumentError.new "You must specify at least one HTTP Handler." if handlers.empty?
+      raise ArgumentError.new "You must specify at least one handler." if handlers.empty?
       0.upto(handlers.size - 2) { |i| handlers[i].next = handlers[i + 1] }
       handlers.first
     end

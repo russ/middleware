@@ -5,7 +5,7 @@ describe Middleware::Builder do
     it "should add items to the stack and make them callable" do
       env = { "result" => [] of String }
 
-      instance = Middleware::Builder(EnvType).new(PushHandler.new("foobar"))
+      instance = Middleware::Builder.new(PushHandler.new("foobar"))
       instance.call(env)
 
       env["result"].first.should eq("foobar")
@@ -14,7 +14,7 @@ describe Middleware::Builder do
     it "should be able to add multiple items" do
       env = { "result" => [] of String }
 
-      instance = Middleware::Builder(EnvType).new([
+      instance = Middleware::Builder.new([
         PushHandler.new("foobar"),
         PushHandler.new("barfoo")
       ])
@@ -28,7 +28,7 @@ describe Middleware::Builder do
   it "should call classes in the proper order" do
     env = { "result" => [] of String }
 
-    instance = Middleware::Builder(EnvType).new([
+    instance = Middleware::Builder.new([
       AppendPrependA.new,
       AppendPrependB.new
     ])
