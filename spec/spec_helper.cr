@@ -9,7 +9,7 @@ class PushHandler
   def initialize(@to_add : String)
   end
 
-  def call(env : EnvType)
+  def call(env)
     env["result"] << @to_add
     call_next(env)
   end
@@ -18,7 +18,7 @@ end
 class AppendPrependA
   include Middleware::Handler
 
-  def call(env : EnvType)
+  def call(env)
     env["result"] << "A"
     call_next(env)
     env["result"] << "A"
@@ -28,7 +28,7 @@ end
 class AppendPrependB
   include Middleware::Handler
 
-  def call(env : EnvType)
+  def call(env)
     env["result"] << "B"
     call_next(env)
     env["result"] << "B"
