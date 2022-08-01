@@ -25,12 +25,12 @@ require "middleware"
 
 ```
 class PushHandler
-  include Middleware::Handler
+  include Middleware::Handler(String)
 
   def initialize(@to_add : String)
   end
 
-  def call(env : EnvType)
+  def call(env : EnvType) : String
     env["result"] << @to_add
     call_next(env)
   end
@@ -40,7 +40,7 @@ context = { "result" => [] of String }
 instance = Middleware::Builder.new([
   PushHandler.new("foobar"),
   PushHandler.new("barfoo")
-])
+] of Middleware::Handler(String))
 instance.call(context)
 ```
 

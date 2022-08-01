@@ -1,10 +1,10 @@
 module Middleware
-  module Handler
-    property next : Handler | Nil
+  module Handler(C)
+    property next : Handler(C) | Nil
 
-    abstract def call(env)
+    abstract def call(env : C) : C
 
-    def call_next(env)
+    def call_next(env : C)
       if next_handler = @next
         next_handler.call(env)
       else

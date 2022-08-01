@@ -1,13 +1,13 @@
 module Middleware
-  class Builder(T)
-    @handler : T
+  class Builder(H)
+    @handler : H
 
     # Creates a new builder with the *handlers* array as handler chain.
-    def self.new(handlers : Array(T))
+    def self.new(handlers : Array(H))
       new(Middleware::Builder.build_call_chain(handlers))
     end
 
-    def initialize(@handler : T)
+    def initialize(@handler : H)
     end
 
     def call(env = Nil)
